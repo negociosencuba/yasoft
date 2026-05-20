@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>YASOFT | Soluciones Seguras</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Inter', sans-serif; }
+    body { background: linear-gradient(135deg, #e0f2fe 0%, #dcfce7 100%); min-height: 100vh; }
+    .wave-bg {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+      pointer-events: none;
+    }
+    .card-hover {
+      transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+    .card-hover:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 35px -12px rgba(0, 0, 0, 0.2);
+    }
+    .btn-whatsapp {
+      background: linear-gradient(135deg, #25D366, #128C7E);
+    }
+    .btn-whatsapp:hover {
+      background: linear-gradient(135deg, #128C7E, #075E54);
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, #0284c7, #0f766e);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+  </style>
+</head>
+<body class="antialiased relative">
+
+<!-- Header con logo tipográfico -->
+<header class="bg-white/90 backdrop-blur-sm shadow-lg sticky top-0 z-30 border-b border-green-100">
+  <div class="container mx-auto px-5 py-3 flex flex-wrap justify-between items-center gap-3">
+    <div class="flex items-center gap-3">
+      <div class="bg-gradient-to-br from-sky-500 to-green-500 text-white w-12 h-12 rounded-2xl flex items-center justify-center shadow-md">
+        <i class="fas fa-shield-alt text-2xl"></i>
+      </div>
+      <div>
+        <h1 class="text-2xl font-extrabold tracking-tight">
+          <span class="gradient-text">YASOFT</span>
+        </h1>
+        <p class="text-xs font-semibold text-gray-500 -mt-1 flex items-center gap-1">
+          <i class="fas fa-check-circle text-green-500 text-xs"></i> SOLUCIONES SEGURAS
+        </p>
+      </div>
+    </div>
+    <div class="flex flex-wrap items-center gap-4 text-sm">
+      <div class="flex items-center gap-2 bg-sky-50 px-3 py-2 rounded-full shadow-sm border border-sky-100">
+        <i class="fas fa-phone-alt text-sky-600"></i>
+        <a href="tel:+5353955850" class="font-semibold text-gray-800 hover:text-sky-700 transition">+53 5395 5850</a>
+      </div>
+      <a href="https://wa.me/5353955850?text=Hola%20YASOFT%2C%20necesito%20informaci%C3%B3n" target="_blank" class="btn-whatsapp text-white px-5 py-2 rounded-full flex items-center gap-2 transition-all shadow-md hover:shadow-lg">
+        <i class="fab fa-whatsapp text-lg"></i> WhatsApp
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- Slogan con degradado cielo-verde -->
+<section class="bg-gradient-to-r from-sky-400 to-green-400 text-white relative overflow-hidden">
+  <div class="container mx-auto px-5 py-12 text-center relative z-10">
+    <p class="text-2xl md:text-3xl font-bold drop-shadow-md">🔐 TU TECNOLOGÍA EN MANOS PROFESIONALES</p>
+    <p class="text-sky-50 text-lg font-medium mt-2">Soluciones integrales con calidad y garantía</p>
+    <div class="flex justify-center gap-4 mt-4">
+      <span class="bg-white/20 backdrop-blur-sm px-4 py-1 rounded-full text-sm"><i class="fas fa-clock mr-1"></i> Respuesta inmediata</span>
+      <span class="bg-white/20 backdrop-blur-sm px-4 py-1 rounded-full text-sm"><i class="fas fa-star mr-1"></i> Confianza total</span>
+    </div>
+  </div>
+  <div class="wave-bg">
+    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+      <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="#ffffff" opacity="0.6"></path>
+    </svg>
+  </div>
+</section>
+
+<!-- Grid de servicios -->
+<main class="container mx-auto px-5 py-16 relative z-10">
+  <div class="text-center mb-12">
+    <h2 class="text-3xl md:text-4xl font-extrabold text-gray-800 inline-block bg-white/50 backdrop-blur-sm px-6 py-2 rounded-full shadow-sm">
+      <i class="fas fa-cogs text-sky-500 mr-2"></i> Nuestros Servicios
+    </h2>
+    <p class="text-gray-700 mt-3 max-w-2xl mx-auto">Especialistas en tecnología, seguridad y conectividad</p>
+  </div>
+  <div id="servicesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="col-span-full flex justify-center py-12">
+      <div class="flex space-x-2"><div class="w-4 h-4 bg-sky-400 rounded-full animate-bounce"></div><div class="w-4 h-4 bg-green-400 rounded-full animate-bounce delay-75"></div><div class="w-4 h-4 bg-sky-400 rounded-full animate-bounce delay-150"></div><span class="ml-2 text-gray-600">Cargando servicios...</span></div>
+    </div>
+  </div>
+</main>
+
+<!-- Sección de contacto -->
+<section class="bg-white/70 backdrop-blur-sm border-y border-green-100 py-16 mt-8">
+  <div class="container mx-auto px-5">
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="bg-white rounded-2xl shadow-md p-6 border-l-8 border-sky-400 hover:shadow-xl transition">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="bg-sky-100 p-3 rounded-full"><i class="fas fa-map-marker-alt text-sky-600 text-xl"></i></div>
+          <h3 class="text-xl font-bold text-gray-800">Dirección</h3>
+        </div>
+        <p class="text-gray-600">BLOQUE L, Esc.28, Apto 6, 3er Piso. Distrito José Martí</p>
+        <div class="mt-4 flex flex-wrap gap-3 text-sm">
+          <div class="flex items-center gap-2"><i class="fab fa-facebook-square text-blue-600 text-lg"></i><span class="text-gray-700">Yasoft Soluciones Seguras</span></div>
+          <div class="flex items-center gap-2"><i class="fas fa-envelope text-gray-500"></i><span class="text-gray-700">yoancoello38@gmail.com</span></div>
+        </div>
+      </div>
+      <div class="bg-white rounded-2xl shadow-md p-6 border-l-8 border-green-400 hover:shadow-xl transition">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="bg-green-100 p-3 rounded-full"><i class="fas fa-headset text-green-600 text-xl"></i></div>
+          <h3 class="text-xl font-bold text-gray-800">Atención inmediata</h3>
+        </div>
+        <p class="text-gray-700 flex items-center gap-2"><i class="fas fa-phone-alt text-green-500"></i> +53 5395 5850</p>
+        <a href="https://wa.me/5353955850?text=Necesito%20presupuesto" target="_blank" class="inline-flex mt-4 bg-green-500 hover:bg-green-600 text-white px-5 py-2 rounded-full gap-2 font-medium transition shadow-md">
+          <i class="fab fa-whatsapp text-lg"></i> Chatea con nosotros
+        </a>
+      </div>
+      <div class="bg-white rounded-2xl shadow-md p-6 border-l-8 border-sky-400 hover:shadow-xl transition">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="bg-sky-100 p-3 rounded-full"><i class="fas fa-chart-line text-sky-600 text-xl"></i></div>
+          <h3 class="text-xl font-bold text-gray-800">Profesionalismo</h3>
+        </div>
+        <ul class="text-gray-600 space-y-2">
+          <li class="flex gap-2"><i class="fas fa-check-circle text-green-500 mt-1"></i> Soporte técnico certificado</li>
+          <li class="flex gap-2"><i class="fas fa-check-circle text-green-500 mt-1"></i> Respuesta rápida (menos de 15 min)</li>
+          <li class="flex gap-2"><i class="fas fa-check-circle text-green-500 mt-1"></i> Garantía en todos los trabajos</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="bg-gradient-to-r from-sky-900 to-green-900 text-white py-8 text-center">
+  <p class="text-sm">© 2026 YASOFT - Soluciones Seguras. Todos los derechos reservados.</p>
+  <p class="text-sky-200 text-xs mt-2"><i class="fas fa-shield-alt"></i> Tecnología de confianza</p>
+</footer>
+
+<!-- JavaScript con ofuscación simple (variables renombradas, código compacto) y textos corregidos -->
+<script>
+(function(){
+  // Lista de servicios con ortografía y redacción corregidas (acentos y claridad)
+  const a = [
+    { t:"Reparación y Mantenimiento de Computadoras", d:"Actualización, software, hardware, eliminación de virus.", i:"fas fa-laptop-code" },
+    { t:"Reparación de Celulares (Smartphones)", d:"Pantallas, baterías, puertos de carga, microelectrónica.", i:"fas fa-mobile-alt" },
+    { t:"Montaje de Redes Informáticas", d:"Cableado estructurado, Wi-Fi, redes locales (LAN), conectividad.", i:"fas fa-network-wired" },
+    { t:"Virtualización de Servidores", d:"Optimización de recursos, nube, servidores locales y remotos.", i:"fas fa-server" },
+    { t:"Instalación y Mantenimiento de Cámaras de Seguridad", d:"Vigilancia, monitoreo remoto, sistemas de alarma, protección de negocios.", i:"fas fa-video" },
+    { t:"Diseño Gráfico y Publicidad", d:"Pósteres, tarjetas de presentación, vallas, branding.", i:"fas fa-palette" },
+    { t:"Reparación de Memorias USB", d:"Recuperación de datos, formateo, cambio de conectores y diagnóstico.", i:"fas fa-memory" },
+    { t:"Instalación de Alarmas", d:"Sensores perimetrales, centrales, sirenas y monitoreo profesional.", i:"fas fa-bell" },
+    { t:"Ventas de Router 4G USB", d:"Dispositivos portátiles 4G, conexión móvil, configuración incluida y asesoría.", i:"fas fa-wifi" }
+  ];
+  const b = document.getElementById("servicesGrid");
+  function c(){
+    if(!b) return;
+    let d = "";
+    for(let e of a){
+      d += '<div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-green-100 card-hover transition-all duration-300 flex flex-col h-full group">' +
+        '<div class="p-6 pb-3 flex justify-center text-5xl text-sky-500 group-hover:text-green-500 transition-colors">' +
+        '<i class="' + e.i + '"></i>' +
+        '</div>' +
+        '<div class="px-5 pb-4 text-center">' +
+        '<h3 class="text-xl font-extrabold text-gray-800">' + e.t + '</h3>' +
+        '<div class="w-16 h-1 bg-gradient-to-r from-sky-400 to-green-400 mx-auto my-3 rounded-full"></div>' +
+        '<p class="text-gray-600 text-sm leading-relaxed">' + e.d + '</p>' +
+        '</div>' +
+        '<div class="px-5 pb-6 mt-auto">' +
+        '<a href="https://wa.me/5353955850?text=Hola%2C%20me%20interesa%20el%20servicio%20de%20' + encodeURIComponent(e.t) + '" target="_blank" class="block w-full text-center bg-gradient-to-r from-green-50 to-sky-50 hover:from-green-100 hover:to-sky-100 text-green-700 font-semibold py-2.5 rounded-xl transition text-sm border border-green-200 shadow-sm">' +
+        '<i class="fab fa-whatsapp mr-2"></i> Consultar por WhatsApp' +
+        '</a>' +
+        '</div>' +
+        '</div>';
+    }
+    b.innerHTML = d;
+  }
+  c();
+  // Botón flotante ofuscado
+  let f = document.createElement('a');
+  f.href = "https://wa.me/5353955850?text=Hola%20YASOFT!%20Me%20interesa%20un%20servicio";
+  f.target = "_blank";
+  f.className = "fixed bottom-6 right-6 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white rounded-full p-4 shadow-xl z-40 flex items-center justify-center gap-2 group transition-all duration-300 hover:scale-105";
+  f.innerHTML = '<i class="fab fa-whatsapp text-2xl"></i><span class="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-300 whitespace-nowrap text-sm font-medium ml-0 group-hover:ml-2">¡Escríbenos!</span>';
+  document.body.appendChild(f);
+})();
+</script>
+
+<!-- Animaciones de entrada -->
+<style>
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .card-hover {
+    animation: fadeUp 0.5s ease-out forwards;
+    opacity: 0;
+  }
+  .card-hover:nth-child(1) { animation-delay: 0.05s; }
+  .card-hover:nth-child(2) { animation-delay: 0.1s; }
+  .card-hover:nth-child(3) { animation-delay: 0.15s; }
+  .card-hover:nth-child(4) { animation-delay: 0.2s; }
+  .card-hover:nth-child(5) { animation-delay: 0.25s; }
+  .card-hover:nth-child(6) { animation-delay: 0.3s; }
+  .card-hover:nth-child(7) { animation-delay: 0.35s; }
+  .card-hover:nth-child(8) { animation-delay: 0.4s; }
+  .card-hover:nth-child(9) { animation-delay: 0.45s; }
+</style>
+</body>
+</html>
