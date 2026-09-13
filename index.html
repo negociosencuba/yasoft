@@ -789,9 +789,104 @@ footer .footer-brand {
 }
 .footer-social a:hover { transform: translateY(-2px); border-color: var(--cyan); box-shadow: 0 0 16px var(--cyan-glow); }
 
-/* ── FLOATING WA (Desktop) ── */
+.footer-legal {
+  display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
+  gap: 6px 16px; margin-top: 10px; padding-top: 12px;
+  border-top: 1px solid var(--border); font-size: 12.5px; color: var(--text-muted);
+}
+.footer-legal a {
+  color: var(--text-muted); text-decoration: none; transition: color 0.2s;
+}
+.footer-legal a:hover { color: var(--cyan); }
+.footer-legal .sep { opacity: 0.5; }
+
+/* ── MODALES LEGALES (Política y Términos) ── */
+.legal-modal {
+  position: fixed; inset: 0; z-index: 200;
+  display: none; align-items: center; justify-content: center;
+  padding: 24px; background: rgba(2,12,8,0.55);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+}
+.legal-modal.open { display: flex; }
+.legal-modal-panel {
+  width: 100%; max-width: 860px; max-height: min(86vh, 780px);
+  display: flex; flex-direction: column;
+  background: var(--bg-glass); border: 1px solid var(--border);
+  border-radius: 18px; box-shadow: var(--shadow-card, 0 20px 60px rgba(0,0,0,0.35));
+  overflow: hidden; animation: legalIn 0.25s cubic-bezier(0.16,1,0.3,1);
+}
+@keyframes legalIn {
+  from { opacity: 0; transform: translateY(14px) scale(0.985); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+.legal-modal-head {
+  display: flex; align-items: flex-start; justify-content: space-between; gap: 12px;
+  padding: 20px 24px 16px; border-bottom: 1px solid var(--border); flex-shrink: 0;
+}
+.legal-modal-head h2 {
+  margin: 0; font-family: 'Syne', sans-serif; font-size: 21px; font-weight: 800;
+  color: var(--text-primary); letter-spacing: -0.02em;
+}
+.legal-modal-head h2 i { color: var(--cyan); margin-right: 8px; }
+.legal-modal-head .sub {
+  margin-top: 5px; font-size: 12.5px; color: var(--text-muted);
+}
+.legal-close {
+  width: 34px; height: 34px; flex-shrink: 0; border-radius: 10px;
+  border: 1px solid var(--border); background: transparent; color: var(--text-muted);
+  font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s;
+}
+.legal-close:hover { color: var(--green); border-color: var(--border-hover); background: var(--cyan-dim); }
+.legal-modal-body {
+  padding: 22px 26px 26px; overflow-y: auto; flex: 1;
+  color: var(--text-primary); font-size: 14.5px; line-height: 1.7;
+  -webkit-overflow-scrolling: touch;
+}
+.legal-modal-body h3 {
+  margin: 26px 0 8px; font-family: 'Syne', sans-serif; font-size: 15.5px;
+  font-weight: 700; color: var(--cyan);
+}
+.legal-modal-body h3:first-child { margin-top: 0; }
+.legal-modal-body p { margin: 0 0 12px; }
+.legal-modal-body ul, .legal-modal-body ol { margin: 0 0 14px; padding-left: 22px; }
+.legal-modal-body li { margin-bottom: 6px; }
+.legal-modal-body strong { color: var(--text-primary); }
+.legal-modal-body a { color: var(--cyan); text-decoration: underline; text-underline-offset: 2px; }
+.legal-modal-body .legal-note {
+  margin-top: 20px; padding: 12px 14px; border-radius: 10px;
+  background: var(--cyan-dim); border: 1px solid var(--border);
+  font-size: 13px; color: var(--text-muted);
+}
+.legal-modal-body .legal-updated { font-size: 12px; color: var(--text-muted); }
+.legal-modal-foot {
+  padding: 12px 24px; border-top: 1px solid var(--border);
+  display: flex; justify-content: flex-end; gap: 10px; flex-shrink: 0; background: transparent;
+}
+.legal-modal-foot .btn-legal {
+  padding: 9px 20px; border-radius: 100px; border: none; cursor: pointer;
+  font-family: 'DM Sans', sans-serif; font-size: 13.5px; font-weight: 600;
+  color: #fff; background: linear-gradient(135deg, var(--cyan), var(--green));
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.legal-modal-foot .btn-legal:hover {
+  transform: translateY(-1px); box-shadow: 0 6px 20px var(--cyan-glow);
+}
+body.no-scroll { overflow: hidden; }
+
+@media (max-width: 600px) {
+  .legal-modal { padding: 12px; }
+  .legal-modal-panel { max-height: 92vh; border-radius: 14px; }
+  .legal-modal-head { padding: 16px 16px 12px; }
+  .legal-modal-body { padding: 16px 16px 20px; }
+  .legal-modal-foot { padding: 10px 16px; }
+  .legal-modal-head h2 { font-size: 18px; }
+}
+
+/* ── FLOATING WA (Todos los dispositivos) ── */
 .float-wa {
   position: fixed; bottom: 28px; right: 28px; z-index: 99;
+  bottom: calc(28px + env(safe-area-inset-bottom, 0px));
   display: flex; align-items: center; gap: 0;
   background: linear-gradient(135deg, #128C7E, #25D366);
   border-radius: 100px; text-decoration: none; color: #fff;
@@ -807,21 +902,6 @@ footer .footer-brand {
 }
 .float-wa:hover .float-wa-text { max-width: 160px; padding-right: 20px; }
 .float-wa:hover { box-shadow: 0 8px 36px rgba(37,211,102,0.6); }
-
-/* ── MOBILE STICKY BAR ── */
-.mobile-cta-bar {
-  display: none;
-  position: fixed; bottom: 0; left: 0; width: 100%; z-index: 99;
-  background: var(--bg-glass); backdrop-filter: blur(12px);
-  border-top: 1px solid var(--border);
-  padding: 10px 16px; gap: 12px;
-}
-.mobile-cta-bar a {
-  flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px;
-  padding: 12px; border-radius: 8px; font-weight: 700; font-size: 14px; text-decoration: none;
-  font-family: 'Syne', sans-serif;
-}
-.mobile-cta-wa { background: linear-gradient(135deg, #128C7E, #25D366); color: #fff; }
 
 #scanline {
   position: fixed; inset: 0; z-index: 0; pointer-events: none;
@@ -844,43 +924,53 @@ footer .footer-brand {
 .banner {
   position: relative; z-index: 1;
   max-width: 1200px; margin: 0 auto; padding: 0 24px 56px;
-  content-visibility: auto; contain-intrinsic-size: auto 500px;
+  content-visibility: auto; contain-intrinsic-size: auto 560px;
 }
 .banner-frame {
   position: relative; overflow: hidden; border-radius: 20px;
   border: 1px solid var(--border);
   background: linear-gradient(135deg, var(--banner-grad-a) 0%, var(--banner-grad-b) 100%);
+  aspect-ratio: 1200 / 520;
+  min-height: clamp(340px, 46vw, 560px);
+  max-height: 620px;
+  touch-action: pan-y;
 }
-.banner-track { display: flex; }
-.banner-track.js-track { animation: banner-scroll 36s linear infinite; will-change: transform; }
-.banner-frame:hover .banner-track, .banner-frame:focus-within .banner-track { animation-play-state: paused; }
+.banner-track {
+  display: flex;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
 .banner-slide {
-  position: relative; flex: 0 0 100%;
-  min-height: 400px;
+  position: relative; flex: 0 0 100%; width: 100%; height: 100%;
 }
-@keyframes banner-scroll {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-.banner-art { position: absolute; inset: 0; width: 100%; height: 100%; }
+.banner-art { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
 .banner-scrim {
   position: absolute; inset: 0;
   background: linear-gradient(90deg, var(--scrim-1) 0%, var(--scrim-2) 50%, var(--scrim-3) 80%, var(--scrim-4) 100%);
 }
 .banner-content {
   position: relative; z-index: 2;
-  max-width: 540px; padding: clamp(40px, 6vw, 64px);
+  height: 100%;
+  max-width: 560px;
+  padding: clamp(36px, 6vw, 60px);
   display: flex; flex-direction: column; align-items: flex-start; justify-content: center;
-  min-height: 400px;
+  overflow-y: auto; scrollbar-width: none; -ms-overflow-style: none;
 }
+.banner-content::-webkit-scrollbar { display: none; }
 .banner-kicker {
   display: inline-flex; align-items: center; gap: 8px;
   font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--green); margin-bottom: 14px;
+  color: var(--green); margin-bottom: clamp(10px, 1.6vw, 14px);
 }
 .banner-kicker i { color: var(--cyan); }
-.banner-title { font-size: clamp(26px, 3.4vw, 40px); font-weight: 800; line-height: 1.12; margin-bottom: 14px; }
-.banner-text { font-size: 15px; color: var(--text-muted); line-height: 1.7; margin-bottom: 24px; max-width: 460px; }
+.banner-title {
+  font-size: clamp(24px, clamp(24px, 3.2vw, 40px), 40px);
+  font-weight: 800; line-height: 1.12; margin-bottom: clamp(10px, 1.8vw, 14px);
+}
+.banner-text {
+  font-size: 15px; color: var(--text-muted); line-height: 1.7;
+  margin-bottom: clamp(18px, 2.4vw, 24px); max-width: 460px;
+}
 .banner-cta {
   display: inline-flex; align-items: center; gap: 9px;
   padding: 12px 24px; border-radius: 10px;
@@ -889,6 +979,39 @@ footer .footer-brand {
   text-decoration: none; box-shadow: 0 0 24px rgba(46,143,99,0.35); transition: all 0.25s;
 }
 .banner-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 32px rgba(46,143,99,0.55); }
+
+/* Barra de controles del carrusel */
+.banner-controls {
+  position: absolute; z-index: 5;
+  right: 16px; bottom: 16px;
+  display: flex; align-items: center; gap: 10px;
+  opacity: 0; transform: translateY(6px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.banner-frame:hover .banner-controls,
+.banner-frame:focus-within .banner-controls,
+.banner-controls.mobile-visible { opacity: 1; transform: translateY(0); }
+.banner-nav-btn {
+  width: 40px; height: 40px; border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--bg-glass);
+  color: var(--text); font-size: 14px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: all 0.25s;
+  -webkit-tap-highlight-color: transparent;
+}
+.banner-nav-btn:hover { border-color: var(--cyan); color: var(--cyan); box-shadow: 0 0 14px var(--cyan-glow); }
+.banner-dots { display: flex; align-items: center; gap: 7px; }
+.banner-dot {
+  width: 9px; height: 9px; border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.65);
+  background: rgba(255,255,255,0.4);
+  padding: 0; cursor: pointer; transition: all 0.3s;
+  -webkit-tap-highlight-color: transparent;
+}
+.banner-dot:hover { transform: scale(1.25); }
+.banner-dot.active { background: #fff; transform: scale(1.25); border-color: #fff; }
+@media (hover: none) { .banner-controls { opacity: 1; transform: translateY(0); } }
 
 /* ── TRAYECTORIA ── */
 .section-title .accent {
@@ -1014,9 +1137,11 @@ body.view-conceme .cta-final-wrap { display: none; }
 @media (max-width: 768px) {
   .services-grid { grid-template-columns: repeat(2, 1fr); }
   .service-card.span-3, .service-card.span-2, .service-card.span-6 { grid-column: span 1; }
-  .mobile-cta-bar { display: flex; }
-  .float-wa { display: none; } /* Evitar duplicidad en móviles */
-  body { padding-bottom: 70px; } /* Espacio para la barra móvil */
+  .float-wa { bottom: calc(18px + env(safe-area-inset-bottom, 0px)); right: 18px; }
+  .float-wa-icon { width: 52px; height: 52px; }
+  .float-wa-icon i { font-size: 24px; }
+  .float-wa-text { display: none; }
+  body { padding-bottom: 0; } /* Sin barra final: sin espacio reservado */
   .header-inner { height: auto; flex-wrap: wrap; gap: 10px 16px; padding: 12px 16px; }
   .main-nav { order: 3; width: 100%; overflow-x: auto; justify-content: flex-start; padding-bottom: 4px; scrollbar-width: none; }
   .main-nav::-webkit-scrollbar { display: none; }
@@ -1030,12 +1155,16 @@ body.view-conceme .cta-final-wrap { display: none; }
   .stat-item:nth-child(4) { border-top: 1px solid var(--border); border-right: none; }
   .stat-item:nth-child(5) { border-top: 1px solid var(--border); border-right: none; grid-column: 1 / -1; }
   .exp-banner { flex-direction: column; align-items: flex-start; gap: 18px; padding: 24px; }
-  .banner-frame { min-height: 460px; }
-  .banner-content { padding: 36px 24px 62px; min-height: 460px; }
-  .banner-art { opacity: 0.5; }
+  .banner { padding: 0 14px 40px; }
+  .banner-frame { border-radius: 16px; min-height: clamp(360px, 92vw, 460px); max-height: none; }
+  .banner-content { padding: 34px 22px 84px; max-width: none; }
+  .banner-art { opacity: 0.45; }
   .banner-scrim { background: linear-gradient(180deg, var(--scrim-m1) 0%, var(--scrim-m2) 100%); }
-  .banner-title { font-size: 26px; }
+  .banner-title { font-size: clamp(22px, 6vw, 26px); }
   .banner-text { font-size: 14px; }
+  .banner-cta { padding: 11px 20px; font-size: 13px; }
+  .banner-controls { right: 12px; bottom: 12px; gap: 8px; }
+  .banner-nav-btn { width: 38px; height: 38px; }
   .timeline { padding-left: 26px; }
   .tl-dot { left: -26px; width: 26px; height: 26px; }
   .tl-line { left: 12px; }
@@ -1048,12 +1177,11 @@ body.view-conceme .cta-final-wrap { display: none; }
   .stat-num { font-size: 26px; }
   .tcard { width: min(340px, 82vw); }
   .testimonials-rating-bar { padding: 20px; gap: 14px; }
-  .banner-content { padding: 28px 18px 54px; }
-  .banner-title { font-size: 24px; }
+  .banner-content { padding: 24px 16px 74px; }
+  .banner-title { font-size: clamp(20px, 5.6vw, 24px); }
+  .banner-text { font-size: 13px; }
   .contact-detail { font-size: 13px; }
-  body { padding-bottom: 76px; }
-  .mobile-cta-bar { padding: 8px 10px; gap: 8px; }
-  .mobile-cta-bar a { font-size: 13px; }
+  body { padding-bottom: 0; }
 }
 
 /* ── MOVIMIENTO REDUCIDO (solo economiza recursos, no congela los carruseles) ── */
@@ -1639,20 +1767,195 @@ body.view-conceme .cta-final-wrap { display: none; }
   <p style="margin-top:8px; font-size:12px; color:var(--text-muted);">
     <i class="fas fa-shield-halved" style="color:var(--cyan); margin-right:6px;"></i>Tecnología de confianza
   </p>
+  <div class="footer-legal">
+    <a href="#legal-terminos" data-legal="terminos" onclick="openLegal('terminos'); return false;">Términos y Condiciones</a>
+    <span class="sep">·</span>
+    <a href="#legal-privacidad" data-legal="privacidad" onclick="openLegal('privacidad'); return false;">Política de Privacidad</a>
+    <span class="sep">·</span>
+    <a href="#legal-aviso" data-legal="aviso" onclick="openLegal('aviso'); return false;">Aviso legal</a>
+  </div>
 </footer>
 
-<!-- ═══ FLOATING WA (Desktop) ═══ -->
+<!-- ═══ MODAL TÉRMINOS Y CONDICIONES ═══ -->
+<div class="legal-modal" id="legal-modal-terminos" role="dialog" aria-modal="true" aria-labelledby="legalTitleTerminos" aria-hidden="true">
+  <div class="legal-modal-panel">
+    <div class="legal-modal-head">
+      <div>
+        <h2 id="legalTitleTerminos"><i class="fas fa-file-contract"></i>Términos y Condiciones del Servicio</h2>
+        <p class="sub">YASOFT Soluciones Seguras · Santiago de Cuba</p>
+      </div>
+      <button class="legal-close" onclick="closeLegal('terminos')" aria-label="Cerrar Términos y Condiciones"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="legal-modal-body">
+      <p class="legal-updated">Última actualización: 13 de septiembre de 2026</p>
+      <p>Al acceder y utilizar la página web de <strong>YASOFT Soluciones Seguras</strong> («YASOFT», «nosotros» o «el sitio»), el usuario acepta los siguientes Términos y Condiciones. Si no está de acuerdo con ellos, le pedimos que no utilice el sitio ni contrate los servicios.</p>
+
+      <h3>1. Información general</h3>
+      <p>YASOFT es un proveedor de servicios tecnológicos con sede en Santiago de Cuba, Cuba. A través de este sitio se presentan de forma informativa los servicios que ofertamos: Reparación y Mantenimiento de computadoras, Reparación de celulares, Instalación de Cámaras de Seguridad (CCTV), Montaje de Redes Informáticas, Despliegue de Modelos Locales de Inteligencia Artificial y Capacitación en IA.</p>
+      <p>La información publicada en el sitio tiene carácter orientativo y no constituye una oferta comercial vinculante por sí sola. Los presupuestos y acuerdos se formalizan de manera individual con cada cliente, por los canales de contacto habilitados.</p>
+
+      <h3>2. Uso del sitio</h3>
+      <p>El usuario se compromete a:</p>
+      <ul>
+        <li>Utilizar el sitio únicamente con fines legales y legítimos.</li>
+        <li>No intentar vulnerar la seguridad del sitio ni interferir con su funcionamiento.</li>
+        <li>Proporcionar datos verdaderos, exactos y actualizados al utilizar el formulario de contacto o cualquier canal de comunicación.</li>
+        <li>No reproducir, copiar ni explotar comercialmente los contenidos de YASOFT sin autorización previa por escrito.</li>
+      </ul>
+
+      <h3>3. Contratación de servicios</h3>
+      <p>La solicitud de un servicio se realiza mediante contacto directo (WhatsApp, correo electrónico o teléfono). La prestación del servicio queda sujeta a:</p>
+      <ul>
+        <li>La confirmación por parte de YASOFT de la disponibilidad técnica y de agenda.</li>
+        <li>La aceptación del presupuesto por el cliente.</li>
+        <li>El pago acordado, según las condiciones que se definan para cada trabajo.</li>
+      </ul>
+      <p>Los precios pueden variar según el alcance, las piezas requeridas y la complejidad del trabajo. Todo presupuesto tiene una validez indicada en el propio documento de cotización.</p>
+
+      <h3>4. Garantías</h3>
+      <p>YASOFT ofrece garantía limitada sobre los trabajos y piezas suministradas, en los términos que se pacten de forma expresa por escrito al momento de finalizar cada servicio. La garantía no cubre daños ocasionados por mal uso, manipulación por terceros, accidentes, sobretensiones eléctricas o causas de fuerza mayor.</p>
+
+      <h3>5. Responsabilidad del cliente sobre sus equipos</h3>
+      <p>El cliente declara ser el titular legítimo o estar autorizado para entregar los equipos que confíe a YASOFT. Asimismo, es responsable de respaldar la información antes de cualquier intervención técnica. YASOFT realizará el trabajo con la mayor diligencia y cuidado profesional, pero no se hace responsable por la pérdida de datos que el cliente no haya respaldado.</p>
+
+      <h3>6. Propiedad intelectual</h3>
+      <p>Todos los contenidos de este sitio (textos, imágenes, logotipos, gráficos y diseño) son propiedad de YASOFT, salvo que se indique lo contrario. Queda prohibida su reproducción total o parcial sin autorización por escrito de YASOFT.</p>
+
+      <h3>7. Limitación de responsabilidad</h3>
+      <p>En la máxima medida permitida por la ley aplicable, YASOFT no será responsable por daños indirectos, incidentales o consecuentes derivados del uso o la imposibilidad de uso de este sitio o de los servicios contratados, salvo en los casos de dolo o culpa grave.</p>
+
+      <h3>8. Enlaces a redes sociales y terceros</h3>
+      <p>Desde el sitio se ofrecen enlaces a perfiles en redes sociales (Facebook, Instagram, WhatsApp). Estas plataformas son gestionadas por terceros, por lo que YASOFT no controla ni se responsabiliza por sus políticas, contenidos o prácticas.</p>
+
+      <h3>9. Legislación aplicable</h3>
+      <p>Estos Términos y Condiciones se rigen por la legislación vigente de la República de Cuba. Cualquier controversia que pudiera derivarse de su interpretación o aplicación se someterá a las autoridades y tribunales competentes de Santiago de Cuba.</p>
+
+      <h3>10. Modificaciones</h3>
+      <p>YASOFT podrá actualizar estos Términos y Condiciones en cualquier momento. Los cambios entrarán en vigor desde su publicación en esta página, por lo que recomendamos revisarlos periódicamente.</p>
+
+      <h3>11. Contacto</h3>
+      <p>Para consultas sobre estos Términos y Condiciones puede escribirnos a <a href="mailto:yasoftss@hotmail.com">yasoftss@hotmail.com</a>, llamarnos al <a href="tel:+18322733705">+1 832 273 3705</a> o escribirnos por WhatsApp.</p>
+
+      <p class="legal-note"><i class="fas fa-info-circle" style="margin-right:6px;"></i>Al seguir navegando en el sitio y contactar a YASOFT, usted acepta los términos descritos en este documento.</p>
+    </div>
+    <div class="legal-modal-foot">
+      <button class="btn-legal" onclick="closeLegal('terminos')">Entendido</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ MODAL POLÍTICA DE PRIVACIDAD ═══ -->
+<div class="legal-modal" id="legal-modal-privacidad" role="dialog" aria-modal="true" aria-labelledby="legalTitlePrivacidad" aria-hidden="true">
+  <div class="legal-modal-panel">
+    <div class="legal-modal-head">
+      <div>
+        <h2 id="legalTitlePrivacidad"><i class="fas fa-user-shield"></i>Política de Privacidad</h2>
+        <p class="sub">YASOFT Soluciones Seguras · Santiago de Cuba</p>
+      </div>
+      <button class="legal-close" onclick="closeLegal('privacidad')" aria-label="Cerrar Política de Privacidad"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="legal-modal-body">
+      <p class="legal-updated">Última actualización: 13 de septiembre de 2026</p>
+      <p>En <strong>YASOFT Soluciones Seguras</strong> respetamos su privacidad y tratamos sus datos personales con transparencia y confidencialidad. Esta Política de Privacidad explica qué información recogemos, para qué la usamos y qué derechos tiene usted.</p>
+
+      <h3>1. Responsable del tratamiento</h3>
+      <p>Los datos personales son tratados por YASOFT Soluciones Seguras, con domicilio en Santiago de Cuba, Cuba. Contacto: <a href="mailto:yasoftss@hotmail.com">yasoftss@hotmail.com</a> · <a href="tel:+18322733705">+1 832 273 3705</a>.</p>
+
+      <h3>2. Datos que recogemos</h3>
+      <ul>
+        <li><strong>Formulario de contacto:</strong> nombre, correo electrónico, número de teléfono y el mensaje que usted nos envía.</li>
+        <li><strong>Preferencias del sitio:</strong> guardamos localmente en su navegador su preferencia de tema (claro u oscuro).</li>
+        <li><strong>Redes sociales:</strong> cuando nos contacta por Facebook, Instagram o WhatsApp, tratamos la información que usted comparte a través de esas plataformas, sujetos a sus propias políticas.</li>
+      </ul>
+
+      <h3>3. Finalidades del tratamiento</h3>
+      <ul>
+        <li>Responder a sus consultas y solicitudes de información.</li>
+        <li>Elaborar presupuestos y gestionar la prestación de servicios solicitados.</li>
+        <li>Mejorar la experiencia de navegación y el funcionamiento del sitio.</li>
+        <li>Enviarle comunicaciones relacionadas con los servicios que nos haya solicitado.</li>
+      </ul>
+
+      <h3>4. Base legal</h3>
+      <p>Tratamos sus datos con su consentimiento (al enviar el formulario o contactarnos) y en virtud de la relación comercial que se establece cuando solicita nuestros servicios. Sus datos no se utilizan para toma de decisiones automatizada ni perfilado.</p>
+
+      <h3>5. Cesión de datos a terceros</h3>
+      <p>No vendemos, alquilamos ni compartimos sus datos personales con terceros con fines comerciales. Únicamente pueden intervenir proveedores que actúan en nuestro nombre para permitir el funcionamiento del sitio o del correo (por ejemplo, el servicio de envío del formulario de contacto), siempre bajo acuerdos de confidencialidad y exclusivamente para las finalidades aquí descritas.</p>
+      <p>La información que usted comparte en redes sociales se rige por las políticas de privacidad de dichas plataformas.</p>
+
+      <h3>6. Conservación de los datos</h3>
+      <p>Conservamos sus datos solo durante el tiempo necesario para responder a su solicitud, prestar el servicio contratado o cumplir obligaciones legales. Las preferencias de tema se guardan en su dispositivo y usted puede eliminarlas con facilidad.</p>
+
+      <h3>7. Sus derechos</h3>
+      <p>Usted puede, en cualquier momento y de forma gratuita:</p>
+      <ul>
+        <li>Acceder a los datos que tengamos sobre usted.</li>
+        <li>Solicitar su rectificación si son inexactos.</li>
+        <li>Solicitar su supresión cuando ya no sean necesarios.</li>
+        <li>Oponerse al tratamiento de sus datos.</li>
+        <li>Retirar su consentimiento en cualquier momento.</li>
+      </ul>
+      <p>Para ejercer cualquiera de estos derechos, escríbanos a <a href="mailto:yasoftss@hotmail.com">yasoftss@hotmail.com</a>. Atenderemos su solicitud en un plazo razonable.</p>
+
+      <h3>8. Seguridad</h3>
+      <p>Adoptamos medidas técnicas y organizativas apropiadas para proteger sus datos frente a accesos no autorizados, pérdida o alteración. Cuando nos contacta por WhatsApp o correo, la transmisión de información está sujeta a los protocolos de seguridad de esos medios.</p>
+
+      <h3>9. Menores de edad</h3>
+      <p>Este sitio está dirigido a mayores de edad. No recogemos a sabiendas datos de menores sin el consentimiento de sus padres o tutores.</p>
+
+      <h3>10. Modificaciones</h3>
+      <p>YASOFT puede actualizar esta Política de Privacidad en cualquier momento. La versión vigente será siempre la publicada en esta página, indicada con su fecha de actualización.</p>
+
+      <h3>11. Contacto</h3>
+      <p>Si tiene preguntas sobre esta Política de Privacidad, contáctenos: <a href="mailto:yasoftss@hotmail.com">yasoftss@hotmail.com</a> · <a href="tel:+18322733705">+1 832 273 3705</a>.</p>
+
+      <p class="legal-note"><i class="fas fa-shield-halved" style="margin-right:6px;"></i>La confianza es la base de nuestra relación. Sus datos están seguros con YASOFT.</p>
+    </div>
+    <div class="legal-modal-foot">
+      <button class="btn-legal" onclick="closeLegal('privacidad')">Entendido</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ MODAL AVISO LEGAL ═══ -->
+<div class="legal-modal" id="legal-modal-aviso" role="dialog" aria-modal="true" aria-labelledby="legalTitleAviso" aria-hidden="true">
+  <div class="legal-modal-panel">
+    <div class="legal-modal-head">
+      <div>
+        <h2 id="legalTitleAviso"><i class="fas fa-scale-balanced"></i>Aviso legal</h2>
+        <p class="sub">YASOFT Soluciones Seguras</p>
+      </div>
+      <button class="legal-close" onclick="closeLegal('aviso')" aria-label="Cerrar Aviso legal"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="legal-modal-body">
+      <p class="legal-updated">Última actualización: 13 de septiembre de 2026</p>
+
+      <h3>1. Identidad</h3>
+      <p><strong>YASOFT Soluciones Seguras</strong> es un proveedor de servicios tecnológicos con domicilio en Santiago de Cuba, Cuba. Correo electrónico: <a href="mailto:yasoftss@hotmail.com">yasoftss@hotmail.com</a>. Teléfono: <a href="tel:+18322733705">+1 832 273 3705</a>.</p>
+
+      <h3>2. Finalidad del sitio</h3>
+      <p>Esta página tiene carácter informativo y sirve como canal de presentación de los servicios tecnológicos que ofertamos. No constituye una oferta comercial vinculante ni sustituye la consulta directa con nuestros especialistas.</p>
+
+      <h3>3. Propiedad intelectual</h3>
+      <p>Los contenidos, marcas, logotipos y diseño de este sitio son propiedad de YASOFT. Su uso no autorizado está prohibido por la legislación vigente.</p>
+
+      <h3>4. Responsabilidad</h3>
+      <p>YASOFT no se hace responsable del contenido o las políticas de sitios de terceros enlazados desde esta página, ni de los daños derivados del uso indebido de la información publicada.</p>
+
+      <h3>5. Actualización</h3>
+      <p>Este aviso legal podrá ser modificado cuando las circunstancias lo requieran.</p>
+    </div>
+    <div class="legal-modal-foot">
+      <button class="btn-legal" onclick="closeLegal('aviso')">Entendido</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ FLOATING WA (Todos los dispositivos) ═══ -->
 <a href="https://wa.me/18322733705?text=Hola%20YASOFT!%20Me%20interesa%20un%20servicio" target="_blank" rel="noopener noreferrer" class="float-wa" aria-label="Contactar por WhatsApp">
   <div class="float-wa-icon"><i class="fab fa-whatsapp"></i></div>
   <div class="float-wa-text">¡Escríbenos ya!</div>
 </a>
-
-<!-- ═══ MOBILE STICKY BAR ═══ -->
-<div class="mobile-cta-bar">
-  <a href="https://wa.me/18322733705?text=Hola%20YASOFT!%20Me%20interesa%20un%20servicio" target="_blank" rel="noopener noreferrer" class="mobile-cta-wa">
-    <i class="fab fa-whatsapp"></i> WhatsApp
-  </a>
-</div>
 
 <script>
 /* ── TEMA CLARO/OSCURO ── */
@@ -1843,30 +2146,124 @@ body.view-conceme .cta-final-wrap { display: none; }
   `).join('');
 })();
 
-/* ── BANNER: MARQUESINA CONTINUA ── */
+/* ── BANNER: CARRUSEL RESPONSIVE (flechas, dots, swipe, autoplay) ── */
 (function() {
+  const frame = document.getElementById('bannerFrame');
   const track = document.getElementById('bannerTrack');
-  if (!track) return;
+  if (!frame || !track) return;
   const slides = Array.from(track.children);
   if (!slides.length) return;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const touchDevice = window.matchMedia('(hover: none)').matches;
+
+  let index = 0;
+  let timer = null;
+  let startX = 0;
+  let startY = 0;
+  let dragging = false;
+
+  /* Controles: flechas + dots */
+  const controls = document.createElement('div');
+  controls.className = 'banner-controls';
+  if (touchDevice) controls.classList.add('mobile-visible');
+
+  const prevBtn = document.createElement('button');
+  prevBtn.className = 'banner-nav-btn';
+  prevBtn.type = 'button';
+  prevBtn.setAttribute('aria-label', 'Diapositiva anterior');
+  prevBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
+
+  const nextBtn = document.createElement('button');
+  nextBtn.className = 'banner-nav-btn';
+  nextBtn.type = 'button';
+  nextBtn.setAttribute('aria-label', 'Diapositiva siguiente');
+  nextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
+
+  const dots = document.createElement('div');
+  dots.className = 'banner-dots';
   slides.forEach((s, i) => {
-    const clone = s.cloneNode(true);
-    clone.setAttribute('aria-hidden', 'true');
-    const svg = clone.querySelector('svg.banner-art');
-    if (svg) {
-      svg.querySelectorAll('[id]').forEach(el => {
-        const old = el.id;
-        const next = old + 'c' + (i + 1);
-        el.id = next;
-        svg.querySelectorAll('[fill],[stroke]').forEach(n => {
-          if (n.getAttribute('fill') === 'url(#' + old + ')') n.setAttribute('fill', 'url(#' + next + ')');
-          if (n.getAttribute('stroke') === 'url(#' + old + ')') n.setAttribute('stroke', 'url(#' + next + ')');
-        });
-      });
-    }
-    track.appendChild(clone);
+    const dot = document.createElement('button');
+    dot.className = 'banner-dot';
+    dot.type = 'button';
+    dot.setAttribute('aria-label', 'Ir a diapositiva ' + (i + 1));
+    dot.addEventListener('click', () => go(i));
+    dots.appendChild(dot);
   });
-  track.classList.add('js-track');
+
+  controls.appendChild(prevBtn);
+  controls.appendChild(dots);
+  controls.appendChild(nextBtn);
+  frame.appendChild(controls);
+
+  function update() {
+    track.style.transform = 'translateX(' + (-index * 100) + '%)';
+    Array.prototype.forEach.call(dots.children, (d, i) => {
+      d.classList.toggle('active', i === index);
+      d.setAttribute('aria-current', i === index ? 'true' : 'false');
+    });
+  }
+
+  function go(i) {
+    index = (i + slides.length) % slides.length;
+    update();
+    restart();
+  }
+
+  function next() { go(index + 1); }
+  function prev() { go(index - 1); }
+
+  function start() {
+    if (reduceMotion) return;
+    stop();
+    timer = setInterval(next, 6000);
+  }
+  function stop() {
+    if (timer) { clearInterval(timer); timer = null; }
+  }
+  function restart() { start(); }
+
+  prevBtn.addEventListener('click', prev);
+  nextBtn.addEventListener('click', next);
+
+  /* Autoplay se pausa en hover/foco y cuando el usuario arrastra */
+  frame.addEventListener('mouseenter', stop);
+  frame.addEventListener('mouseleave', start);
+  frame.addEventListener('focusin', stop);
+  frame.addEventListener('focusout', start);
+
+  /* Swipe táctil: solo horizontal, no interfiere con scroll vertical */
+  frame.addEventListener('pointerdown', (e) => {
+    dragging = true;
+    startX = e.clientX;
+    startY = e.clientY;
+  });
+  frame.addEventListener('pointermove', (e) => {
+    if (!dragging) return;
+    const dx = e.clientX - startX;
+    const dy = e.clientY - startY;
+    /* Bloquea la selección/arrastre solo cuando el gesto es claramente horizontal */
+    if (Math.abs(dx) > 8 && Math.abs(dx) > Math.abs(dy)) e.preventDefault();
+  }, { passive: false });
+  frame.addEventListener('pointerup', (e) => {
+    if (!dragging) return;
+    dragging = false;
+    const dx = e.clientX - startX;
+    const dy = e.clientY - startY;
+    if (Math.abs(dx) > 48 && Math.abs(dx) > Math.abs(dy)) {
+      if (dx < 0) next(); else prev();
+    }
+  });
+  frame.addEventListener('pointercancel', () => { dragging = false; });
+
+  /* Teclado: flechas izq/der para accesibilidad */
+  frame.setAttribute('tabindex', '0');
+  frame.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') { e.preventDefault(); prev(); }
+    else if (e.key === 'ArrowRight') { e.preventDefault(); next(); }
+  });
+
+  update();
+  start();
 })();
 
 /* ── CONTADORES ANIMADOS (STATS) ── */
@@ -1980,6 +2377,56 @@ body.view-conceme .cta-final-wrap { display: none; }
 (function() {
   var y = document.getElementById('footerYear');
   if (y) y.textContent = new Date().getFullYear();
+})();
+
+/* ── MODALES LEGALES ── */
+(function() {
+  function openLegal(id) {
+    var modal = document.getElementById('legal-modal-' + id);
+    if (!modal) return;
+    var all = document.querySelectorAll('.legal-modal');
+    for (var i = 0; i < all.length; i++) {
+      all[i].classList.remove('open');
+      all[i].setAttribute('aria-hidden', 'true');
+    }
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('no-scroll');
+    var closeBtn = modal.querySelector('.legal-close');
+    if (closeBtn) closeBtn.focus();
+  }
+  function closeLegal(id) {
+    var modal = document.getElementById('legal-modal-' + id);
+    if (!modal) return;
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    if (!document.querySelector('.legal-modal.open')) {
+      document.body.classList.remove('no-scroll');
+    }
+  }
+  window.openLegal = openLegal;
+  window.closeLegal = closeLegal;
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      var openModal = document.querySelector('.legal-modal.open');
+      if (openModal) {
+        closeLegal('terminos');
+        closeLegal('privacidad');
+        closeLegal('aviso');
+      }
+    }
+  });
+
+  var overlays = document.querySelectorAll('.legal-modal');
+  for (var j = 0; j < overlays.length; j++) {
+    overlays[j].addEventListener('click', function(e) {
+      if (e.target === this) {
+        var id = this.id.replace('legal-modal-', '');
+        closeLegal(id);
+      }
+    });
+  }
 })();
 </script>
 </body>
